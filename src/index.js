@@ -23,6 +23,7 @@ function checksExistsUserAccount(request, response, next) {
   return next();
 }
 
+// criei essa middleware para checar por id um todo
 function checksExistsTodosByID(request,response,next){
   const {user} = request;
   const {id} = request.params;
@@ -61,8 +62,6 @@ app.post('/users', (request, response) => {
 
 app.get('/todos', checksExistsUserAccount, (request, response) => {
   const {user} = request;
-
-  //const resp = user.todos.find((todos) => todos.id);
 
   return response.json(user.todos);
 });
